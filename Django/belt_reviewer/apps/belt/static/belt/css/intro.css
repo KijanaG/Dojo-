@@ -1,0 +1,32 @@
+#window {
+    width: 100%; 
+    height: 100vh; 
+    background: linear-gradient(to right, grey, white, grey); 
+    padding-top: 30px;
+}
+#login {
+    width: 320px; 
+    height: 265px; 
+    border-radius: 10px; 
+    padding-top: 10px; 
+    display: block; 
+    background-image: linear-gradient(to bottom, #a7cfdf, #23538ac9);
+}
+#login_title {
+    margin-left: 90px;
+}
+#top {
+    margin: 0px 0px 10px 6px;
+}
+#container{
+    width:300px; 
+    border-radius: 10px; 
+    padding-top: 15px; 
+    display: block; 
+    margin-top: 15px; 
+    background-image: linear-gradient(to bottom, #d2d2f9, #a6a6f2);
+}
+.btn-lg {
+    margin: 0px 0px 10px 6px; 
+    justify-content: center;
+}

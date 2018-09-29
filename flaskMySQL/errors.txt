@@ -1,0 +1,34 @@
+pymysql.connect(host = 'localhost', 
+
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'loclhost' ([Errno 8] nodename nor servname provided, or not known)")
+__________________________________
+user = 'root'
+
+pymysql.err.OperationalError: (1045, "Access denied for user 'rt'@'localhost' (using password: YES)")
+_______________________________________
+password = 'root'
+
+pymysql.err.OperationalError: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+______________________________________________
+db = db 
+
+on.py", line 9, in __init__
+    db = dbbb,
+NameError: name 'dbbb' is not defined
+_____________________________________
+charset = 'utf8mb4'
+
+    self.encoding = charset_by_name(self.charset).encoding
+AttributeError: 'NoneType' object has no attribute 'encoding'
+________________________________________
+
+cursorclass = pymsql.cursors.DictCursor
+
+    cursorclass = pymy.cursors.DictCursor,
+NameError: name 'pymy' is not defined
+____________________________________________
+auto commit = True)
+
+    self.connection = connection
+       ^
+SyntaxError: invalid syntax

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+    <style>
+        .box{
+            background-color: {{hello}};
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            justify-content: center;
+            margin: -1px;
+        }
+        .bax{
+            background-color: {{world}};
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            justify-content: center;
+            margin: -1px;
+        }
+        </style>
+</head>
+<body>
+    {% for i in range(x) %}
+        <div>
+        {% for l in range(y) %}
+            {% if (l+i)%2 == 0: %}
+                <div class="box"></div>
+            {% elif l%1==0 %}
+                <div class="bax"></div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endfor%}
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sports Leagues</title>
+	</head>
+	<body>
+		<h2>Atlantic Soccer Conference </h2>
+		<ol>
+			{% for team in ASC %}
+				<li>{{team.location}} {{ team.team_name }}</li>
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h2> Boston Penguins Roster </h2>
+		<ol>
+			{% for player in BPP %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h2> All Players In ICBC </h2>
+		<ol>
+			{% for teams in ICBCP %}
+				{% for players in players %}
+				{% if teams.id == players.curr_team_id %}
+				<li>{{players.first_name}} {{players.last_name}}</li>
+				{% endif %}
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2> All Players In ACAF </h2>
+		<ol>
+			{% for teams in ACAF %}
+				{% for players in players %}
+				{% if teams.id == players.curr_team_id and players.last_name == "Lopez" %}
+				<li>{{players.first_name}} {{players.last_name}}</li>
+				{% endif %}
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2> All Football Players </h2>
+		<ol>
+			{% for leagues in Football %}
+				{% for teams in teams %}
+					{% if leagues.id == teams.league_id %}
+						{% for players in players %}
+							{% if teams.id == players.curr_team_id %}
+							<li>{{players.first_name}} {{players.last_name}}</li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2> All Teams With Player Named Sophia </h2>
+		<ol>
+				{% for team in teams %}
+					{% for player in players %}
+						{% if player.curr_team_id == team.id %}
+							{% if player.first_name == "Sophia" %}
+							<li>{{team.location}} {{team.team_name}}</li>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+				{% endfor %}
+		</ol>
+		<h2> All Leagues With Player Named Sophia </h2>
+		<ol>
+			{% for league in leagues %}
+				{% for team in teams %}
+					{% if team.league_id == league.id %}
+						{% for player in players %}
+							{% if player.curr_team_id == team.id %}
+								{% if player.first_name == "Sophia" %}
+								<li>{{ league.name }}</li>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2> Flores </h2>
+		<ol>
+			{% for players in Flores %}
+				{% if players.curr_team_id != Rough %}
+				<li>{{players.first_name}} {{players.last_name}}</li>
+				{% endif %}
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+				{% endfor %}
+		</ol>
+		
+		<hr>
+	</body>
+</html>

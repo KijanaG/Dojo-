@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Registration Form</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+    .haters, .last, .error, .mail{
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container float-left table-dark" style="width: 330px; display: inline-block; border-radius: 5px;">
+    <h2> Registration Form </h2>
+    <form action="/process" method="POST" class="float-right">
+        <table>
+            <tbody>
+                {% with errors = get_flashed_messages(category_filter=['haters']) %}
+                    {% if errors %}
+                        {% for message in errors %}
+                            <h6 class="haters"> {{ message }} </h6>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <tr><div class="col-7 form-group">First Name:<input type="text" name="first_name"></div></tr>
+                {% with errors = get_flashed_messages(category_filter=['last']) %}
+                    {% if errors %}
+                        {% for message in errors %}
+                            <h6 class="last"> {{ message }} </h6>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <tr><div class="col-7 form-group">Last Name:<input type="text" name="last_name"></div></tr>
+                {% with errors = get_flashed_messages(category_filter=['mail']) %}
+                    {% if errors %}
+                        {% for message in errors %}
+                            <h6 class="mail"> {{ message }} </h6>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <tr><div class="col-2 form-group">Email:<input type="text" name="email"></div></tr>
+                {% with errors = get_flashed_messages(category_filter=['error']) %}
+                    {% if errors %}
+                        {% for message in errors %}
+                            <h6 class="error"> {{ message }} </h6>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <tr><div class="col-2 form-group">Password:<input type="password" name="password"></div></tr>
+                <tr><div class="col-7 form-group">Confirm Password:<input type="password" name="confirm"></div></tr>
+                </tbody>
+            </table>                   
+            <div style="margin-left: 10px;"><input style="margin: 0px 0px 10px 6px;" class="btn btn-info" type="submit" value="Submit"></div>
+    </form>
+</div>
+
+<div class="container float-left table-danger" style="width: 400px; display: inline-block; border-radius: 5px;">
+        <h2 class="float-lg-left"> Login </h2>
+
+        <form action="/login" method="POST" class="float-right">
+            <table>
+                <tbody>
+                        {% with errors = get_flashed_messages(category_filter=['error']) %}
+                            {% if errors %}
+                                {% for message in errors %}
+                                    <h6 class="login"> {{ message }} </h6>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    <tr><div class="col-2 form-group">Email:<input type="text" name="email"></div></tr>
+                    <tr><div class="col-2 form-group">Password:<input type="password" name="password"></div></tr>
+                </tbody>
+            </table>                   
+            <div style="margin-left: 10px;"><input   style="margin: 0px 0px 10px 6px;" class="btn btn-info" type="submit" value="Submit"></div>
+        </form>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

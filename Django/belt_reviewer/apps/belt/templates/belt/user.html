@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Users Show</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+        <nav class="navbar navbar-light bg-light">
+            <h2 class="navbar-brand mb-0 h1">Welcome, {{request.session.first_name}}</h2>
+            <h3 id="user" class="float-left"> <a href="/new">Add Book and Review</a></h3>
+            <h3 id="logout">
+                <a href="/">Logout</a>
+            </h3>
+        </nav>
+        <br>
+    <h1> User Alias:  {{user.first_name}}</h1>
+    <br>
+    <h3> Full Name: {{user.first_name}} {{user.last_name}} </h3>
+    <br>
+    <h3> Email: {{user.email}} </h3>
+    <br>
+    <h3> Total Reviews: {{count}} </h3>
+    <br>
+    <h4>Posted reviews on the following books: </h4>
+    {% for i in num %}   
+        {% for book in books %}    
+            {% if i == book.id %}
+              <a href="/show/{{book.id}}"> <h3>{{book.title}}</h3> </a>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

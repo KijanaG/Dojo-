@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+    .nav-title{
+      text-align: center;
+      font-weight: bold;
+      color:navajowhite;
+      position: relative;
+      top: 50px;
+    }
+    nav{
+      background:linear-gradient(to bottom,rgb(22,22,104,5%), #0d0c44 100%);
+      background-color: rgb(22, 22, 104);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px; 
+      position: fixed;
+      width: 100%;
+      top: -6%;
+      height: 90px;
+    }
+    body{
+      background-color: rgb(91, 91, 119);
+    }
+    .game{
+      height: 14vh;
+      background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+      padding-top: 2%;
+      margin: 1%;
+      border-radius: 10px;
+      overflow-y: scroll;
+      padding-right: 15px;
+    }
+    .home{
+      font-weight: bold;
+      display: inline-block;
+      margin: 2% 0% 0% 5%;
+    }
+    .away{
+      float: right;
+      display: inline-block;
+      margin: 2% 4% 0% 5%;
+    }
+    .time{
+      margin-top: 2%;
+      text-align: center;
+      font-weight: bold;
+    }
+    h3{
+      margin: 0 auto;
+    }
+    img{
+      display: inline-block;
+    }
+    .home_img{
+      margin-left: 10%;
+      float: left;
+    }
+    .away_img{
+      margin-right: 15%;
+      float: right;
+    }
+    svg{
+      color: red;
+    }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h3 class="nav-title">Games Today</h3>
+    </nav>
+    <div style="width: 100%; height: 45px;"></div>
+    <div style="width: 100%; height: 120px; position:fixed; background-color: rgb(6, 6, 75); top: 91.5%;">
+      {% load static %}
+      <svg id="i-home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M12 20 L12 30 4 30 4 12 16 2 28 12 28 30 20 30 20 20 Z" />
+    </svg>
+    </div>
+    {% for game in data %}
+    <div class="game">
+      <div  class="teams">
+        {% if game.home|length > 18 %}
+        <p class="home">{{game.home}} </p>
+        {% else %}
+        <h6 class="home">{{game.home}} </h6>
+        {% endif %}
+        {% if game.away|length > 18 %}
+        <p class="away">{{game.away}} </p>
+        {% else %}
+        <h6 class="away">{{game.away}} </h6>
+        {% endif %}
+      </div>
+          <img src="{{game.home_img}}" class="home_img">
+          <img src="{{game.away_img}}" class="away_img">
+          {% if game.date == "Live" %}
+          <div class="time" style="color: red; font-size: 120%;">{{game.date}}</div>
+          {% else %}
+          <div class="time">{{game.date}}</div>
+          {% endif %}
+    </div>
+    {% endfor %}
+    <div style="height: 63px;"></div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

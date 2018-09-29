@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>Login Form</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'belt/css/intro.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div id="window">
+            <div class="container" id="login">
+                <h2 id="login_title"> Login </h2>
+                <form action="/login" method="POST" class="float-right" style="margin-left: 40px;">
+                    {% csrf_token %}
+                    <table>
+                        <tbody>
+                            {% for message in messages %} {% if message.tags == "mail error" %}
+                            <h6 style="color: red;"> {{ message }} </h6>
+                            {% endif %} {% endfor %}
+                            <tr>
+                                <div class="col-2 form-group">Email:
+                                    <input type="text" name="email">
+                                </div>
+                            </tr>
+                            {% for message in messages %} {% if message.tags == "pword error" %}
+                            <h6 style="color: red;"> {{ message }} </h6>
+                            {% endif %} {% endfor %}
+                            <tr>
+                                <div class="col-2 form-group">Password:
+                                    <input type="password" name="password">
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-left: 10px;">
+                        <input class="btn btn-info" id="top" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+    <!-- ################################################################################################################################################### -->
+            <div class="container" id="container">
+                <h2 id="reg_title" style="margin-left: 48px;"> Registration </h2>
+                <form action="/registration" method="POST" class="float-right" style="margin-left: 35px;">
+                    {% csrf_token %}
+                    <table>
+                        <tbody>
+                            {% for message in messages %} {% if message.tags == "first_name error" %}
+                            <h6 style="color: red;"> {{ message }} </h6>
+                            {% endif %} {% endfor %}
+                            <tr>
+                                <div class="col-7 form-group">First Name:
+                                    <input type="text" name="first_name">
+                                </div>
+                            </tr>
+                            {% for message in messages %} {% if message.tags == "last_name error" %}
+                            <h6 style="color: red;"> {{ message }} </h6>
+                            {% endif %} {% endfor %}
+                            <tr>
+                                <div class="col-7 form-group">Last Name:
+                                    <input type="text" name="last_name">
+                                </div>
+                            </tr>
+                            {% for message in messages %} {% if message.tags == "email error" %}
+                            <h6 style="color: red;"> {{ message }} </h6>
+                            {% endif %} {% endfor %}
+                            <tr>
+                                <div class="col-2 form-group">Email:
+                                    <input type="text" name="email">
+                                </div>
+                            </tr>
+                            {% for message in messages %} {% if message.tags == "password error" %}
+                            <h6 style="color: red;"> {{ message }} </h6>
+                            {% endif %} {% endfor %}
+                            <tr>
+                                <div class="col-2 form-group">Password:
+                                    <input type="password" name="password">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="col-7 form-group">Confirm Password:
+                                    <input type="password" name="confirm">
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-left: 10px;">
+                        <input class="btn btn-info btn-lg" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            $('#container').css({'height':'auto','display':'table'})
+            $('#login').css({'height':'auto','display':'table'})
+        </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>

@@ -1,0 +1,22 @@
+pip install Django==1.11.9 
+	Installed packages pytz and django
+pip list
+	listed all packages and their respective version numbers on my computer
+deactivate
+	deactivated python environment
+pip3 list
+	lists packages in pip3 and shows virtual environment instead of django
+source py3Env/bin/activate
+	reactivate virtual environment
+pip install Django==1.11.9 
+	'Requirement already satisfied...'
+pip freeze 
+	showed only django and pytz, not pip, setuptools, or pytz
+pip freeze > requirements.txt
+	info from pip freeze was found inside text file
+pip uninstall Django
+	provides files that would be removed if uninstalled
+pip show Django
+	nothing
+pip search Flask
+	lists a lot of Flask files
